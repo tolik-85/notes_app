@@ -1,11 +1,11 @@
 const view = {
   onLoaded() {
-    view.addEventListeners()
+    this.addEventListeners()
   },
 
   addEventListeners() {
     const elAddNoteBtn = document.querySelector('#add-note')
-    elAddNoteBtn.addEventListener('click', view.onClickAddNoteBtn)
+    elAddNoteBtn.addEventListener('click', this.onClickAddNoteBtn)
   },
 
   onClickAddNoteBtn() {
@@ -56,9 +56,12 @@ const view = {
   renderNotesContainer(notes) {
     const notesContainer = document.querySelector('#notes-container')
     notes.forEach(note => {
-      const noteCard = generator.generateNoteCard(note)
-      notesContainer.appendChild(noteCard)
+      if (!note.isDeleted) {
+        const noteCard = generator.generateNoteCard(note)
+        notesContainer.appendChild(noteCard)
+      }
     })
   },
 }
-document.addEventListener('DOMContentLoaded', view.onLoaded)
+
+document.addEventListener('DOMContentLoaded', view.onLoaded.bind(view))
