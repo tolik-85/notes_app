@@ -37,19 +37,20 @@ const view = {
     const elTextArea = generator.generateTextAreaNoteCard(
       elParagraphNote.textContent
     )
-
+    controller.handleChangePrevValue(elParagraphNote.textContent)
     elDivNoteContent.appendChild(elTextArea)
     elTextArea.focus()
   },
 
   onElTExtAreaNoteBlur(e) {
+    const notesContainer = document.querySelector('#notes-container')
     const elTextArea = e.target
     const elDivNoteContent = e.target.parentNode
+    notesContainer.innerHTML = ''
     const elParagraph = generator.generateElParagraphNoteCard(elTextArea.value)
-    // controller.handleChangeNoteValue(elTextArea.value, nextNoteValue)
-    elTextArea.remove()
+    controller.handleChangeNextValue(elTextArea.value)
+    controller.handleChangeNoteValue()
     elDivNoteContent.appendChild(elParagraph)
-    console.log(elParagraph.textContent)
   },
 
   renderNotesContainer(notes) {
