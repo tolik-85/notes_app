@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Приложение для заметок</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="section">
+        <h1>Приложение для заметок</h1>
+      </div>
+      <div class="section">
+        <div class="note-form">
+          <textarea
+            id="note-content"
+            rows="4"
+            placeholder="Введите вашу заметку..."
+          ></textarea>
+          <button id="add-note">Добавить заметку</button>
+        </div>
+      </div>
+      <div class="section">
+        <div class="notes-header">
+          <h2>Список заметок</h2>
+          <span class="notes-count">Всего заметок: 0</span>
+        </div>
+        <div class="notes" id="notes-container">
+          <!-- Заметки будут отображаться здесь -->
+          <!-- <div class="note-card">
+            <div class="note-content">
+              <p>Это пример заметки.</p>
+            </div>
+            <div class="note-actions">
+              <button>Удалить</button>
+            </div>
+          </div>
+          <div class="note-card">
+            <div class="note-content">
+              <textarea>Это пример заметки.</textarea>
+            </div>
+            <div class="note-actions">
+              <button>Удалить</button>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <script src="js/model.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/generator.js"></script>
+    <script src="js/view.js"></script>
+  </body>
+</html>
