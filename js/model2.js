@@ -1,30 +1,5 @@
 const model = {
-  notes: [
-    // {
-    //   id: 1,
-    //   text: 'noteText',
-    //   isEditable: false,
-    //   isDeleted: false,
-    // },
-    // {
-    //   id: 2,
-    //   text: 'noteText',
-    //   isEditable: false,
-    //   isDeleted: true,
-    // },
-    // {
-    //   id: 3,
-    //   text: 'noteText',
-    //   isEditable: true,
-    //   isDeleted: false,
-    // },
-    // {
-    //   id: 4,
-    //   text: 'noteText',
-    //   isEditable: false,
-    //   isDeleted: false,
-    // },
-  ],
+  notes: [],
 
   addNoteByText(noteText) {
     let noteId = this.notes.at(-1)?.id + 1
@@ -73,9 +48,15 @@ const model = {
   },
 
   editNote(NewNoteText, id) {
-    const findedNote = this.notes.find(note => note.id === id)
-    findedNote.text = NewNoteText
-    findedNote.isEditable = false
+    console.log(`model ${NewNoteText}, ${id}`)
+
+    this.notes.forEach(note => {
+      if (note.id === +id) {
+        note.text = NewNoteText
+        note.isEditable = false
+      }
+    })
+    console.log(this.notes)
   },
 }
 

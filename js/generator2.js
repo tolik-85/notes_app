@@ -37,7 +37,7 @@ const generator = {
   generateElParagraphNoteCard(textContent) {
     elParagraph = document.createElement('p')
     elParagraph.textContent = textContent
-    elParagraph.addEventListener('click', view.onDoubleClickElParagraphNote)
+    elParagraph.addEventListener('dblclick', view.onDoubleClickElParagraphNote)
 
     return elParagraph
   },

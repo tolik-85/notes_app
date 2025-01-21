@@ -28,19 +28,14 @@ const view = {
   },
 
   onDoubleClickElParagraphNote(e) {
-    const id = e.target.parentNode.parentNode.id
-    controller.handleMarkNoteAsEditableById(id)
+    const noteId = e.target.parentNode.parentNode.id
+    controller.handleMarkNoteAsEditableById(noteId)
   },
 
   onElTExtAreaNoteBlur(e) {
-    const notesContainer = document.querySelector('#notes-container')
-    const elTextArea = e.target
-    const elDivNoteContent = e.target.parentNode
-    notesContainer.innerHTML = ''
-    const elParagraph = generator.generateElParagraphNoteCard(elTextArea.value)
-    controller.handleChangeNextValue(elTextArea.value)
-    controller.handleChangeNoteValue()
-    elDivNoteContent.appendChild(elParagraph)
+    const noteId = e.target.parentNode.parentNode.id
+    const elTextAreaText = e.target.value
+    controller.handleEditNote(elTextAreaText, noteId)
   },
 
   renderNotesContainer(notes) {

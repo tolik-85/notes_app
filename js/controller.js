@@ -18,7 +18,14 @@ const controller = {
     view.renderNotesContainer(notes)
     view.renderNotesCounter(notes.length)
   },
-  handleEditNote(NewNoteText, id) {},
+  handleEditNote(NewNoteText, id) {
+    console.log(`controller ${NewNoteText}, ${id}`)
+
+    model.editNote(NewNoteText, id)
+    const notes = model.getNotes()
+    view.renderNotesContainer(notes)
+  },
+
   // handleChangeNoteValue() {
   //   model.changeNote()
   //   const notes = model.getNotes()
