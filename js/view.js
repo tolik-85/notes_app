@@ -1,6 +1,7 @@
 const view = {
   onLoaded() {
     this.addEventListeners()
+    controller.handleLoadPage()
   },
 
   addEventListeners() {
@@ -45,10 +46,6 @@ const view = {
       const noteCard = generator.generateNoteCard(note)
       notesContainer.appendChild(noteCard)
     })
-    // const textArea = notesContainer.querySelector('textarea')
-    // if (textArea) {
-    //   textArea.focus()
-    // }
   },
 }
 

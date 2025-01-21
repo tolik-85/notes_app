@@ -19,6 +19,9 @@ const model = {
     const notes = this.notes.filter(note => note.isDeleted === false)
     return notes
   },
+  setNotes(notes) {
+    this.notes = notes
+  },
   // removeNoteById(id) {
   //   const findedNote = this.notes.find(note => {
   //     note.id === id
