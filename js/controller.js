@@ -1,4 +1,5 @@
 const controller = {
+  handleLoadPage() {},
   handleAddNote(noteText) {
     model.addNoteByText(noteText)
     const notes = model.getNotes()
