@@ -13,6 +13,7 @@ const generator = {
     }
 
     elDivNoteCard.classList.add('note-card')
+    elDivNoteCard.setAttribute('id', note.id)
     elDivContent.classList.add('note-content')
     elDivNoteActions.classList.add('note-actions')
 
@@ -36,7 +37,8 @@ const generator = {
   generateElParagraphNoteCard(textContent) {
     elParagraph = document.createElement('p')
     elParagraph.textContent = textContent
-    elParagraph.addEventListener('dblclick', view.onElParagraphNoteDoubleClick)
+    elParagraph.addEventListener('click', view.onDoubleClickElParagraphNote)
+
     return elParagraph
   },
 }

@@ -1,26 +1,31 @@
 const controller = {
-  handleAddNote(note) {
-    model.addNote(note)
-    const notes = model.getNotes()
-    view.renderNotesContainer(notes)
-
-    view.renderNotesCounter(notes.length)
-  },
-  handleDeleteNote(noteTextContent) {
-    model.deleteNote(noteTextContent)
+  handleAddNote(noteText) {
+    model.addNoteByText(noteText)
     const notes = model.getNotes()
     view.renderNotesContainer(notes)
     view.renderNotesCounter(notes.length)
   },
-  handleChangeNoteValue() {
-    model.changeNote()
+  handleRemoveNoteById(id) {
+    model.removeNoteById(id)
     const notes = model.getNotes()
     view.renderNotesContainer(notes)
+    view.renderNotesCounter(notes.length)
   },
-  handleChangePrevValue(prevValue) {
-    model.setPrevValue(prevValue)
+  handleMarkNoteAsEditableById(id) {
+    model.markNoteAsEditableById(id)
+    const notes = model.getNotes()
+    view.renderNotesContainer(notes)
+    view.renderNotesCounter(notes.length)
   },
-  handleChangeNextValue(nextValue) {
-    model.setNextValue(nextValue)
-  },
+  handleEditNote(NewNoteText, id) {},
+  // handleChangeNoteValue() {
+  //   model.changeNote()
+  //   const notes = model.getNotes()
+  //   view.renderNotesContainer(notes)
+  // },
 }
+// handleLoadPage() {
+//   const tasks = storage.restoreTasks()
+//   model.setTasks(tasks)
+//   view.renderTasks(tasks)
+// },

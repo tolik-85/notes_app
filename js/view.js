@@ -18,11 +18,8 @@ const view = {
   },
 
   onClickDeleteNoteBtn(e) {
-    const noteTextContent =
-      e.target.parentNode.parentNode.querySelector('p').innerHTML
-    const notesContainer = document.querySelector('#notes-container')
-    notesContainer.innerHTML = ''
-    controller.handleDeleteNote(noteTextContent)
+    const noteId = e.target.parentNode.parentNode.id
+    controller.handleRemoveNoteById(noteId)
   },
 
   renderNotesCounter(notesCount) {
@@ -30,16 +27,9 @@ const view = {
     notesCounter.innerHTML = `Всего заметок: ${notesCount}`
   },
 
-  onElParagraphNoteDoubleClick(e) {
-    const elParagraphNote = e.target
-    const elDivNoteContent = e.target.parentNode
-    elParagraphNote.remove()
-    const elTextArea = generator.generateTextAreaNoteCard(
-      elParagraphNote.textContent
-    )
-    controller.handleChangePrevValue(elParagraphNote.textContent)
-    elDivNoteContent.appendChild(elTextArea)
-    elTextArea.focus()
+  onDoubleClickElParagraphNote(e) {
+    const id = e.target.parentNode.parentNode.id
+    controller.handleMarkNoteAsEditableById(id)
   },
 
   onElTExtAreaNoteBlur(e) {
@@ -55,12 +45,15 @@ const view = {
 
   renderNotesContainer(notes) {
     const notesContainer = document.querySelector('#notes-container')
+    notesContainer.innerHTML = ''
     notes.forEach(note => {
-      if (!note.isDeleted) {
-        const noteCard = generator.generateNoteCard(note)
-        notesContainer.appendChild(noteCard)
-      }
+      const noteCard = generator.generateNoteCard(note)
+      notesContainer.appendChild(noteCard)
     })
+    // const textArea = notesContainer.querySelector('textarea')
+    // if (textArea) {
+    //   textArea.focus()
+    // }
   },
 }
 
