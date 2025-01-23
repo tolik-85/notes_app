@@ -15,7 +15,6 @@ const controller = {
   },
   handleRemoveNoteById(id) {
     model.removeNoteById(id)
-    console.log(model.notes)
     storage.saveNotes(model.notes)
     const notes = model.getNotes()
     view.renderNotesContainer(notes)

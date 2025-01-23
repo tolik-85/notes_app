@@ -15,51 +15,36 @@ const model = {
 
     this.notes.push(note)
   },
+
   getNotes() {
     const notes = this.notes.filter(note => note.isDeleted === false)
     return notes
   },
+
   setNotes(notes) {
     this.notes = notes
   },
-  // removeNoteById(id) {
-  //   const findedNote = this.notes.find(note => {
-  //     note.id === id
-  //   })
-  //   findedNote.isDeleted = true
-  // },
-  // removeNoteById(id) {
-  //   console.log(id)
 
-  //   const findedNote = this.notes.filter(note => note.id === +id)
-  //   findedNote.isDeleted = true
-  // },
   removeNoteById(id) {
-    this.notes.forEach(note => {
-      if (note.id === +id) {
-        note.isDeleted = true
-      }
+    const findedNote = this.notes.find(note => {
+      return note.id === +id
     })
+    findedNote.isDeleted = true
   },
 
   markNoteAsEditableById(id) {
-    this.notes.forEach(note => {
-      if (note.id === +id) {
-        note.isEditable = true
-      }
+    const findedNote = this.notes.find(note => {
+      return note.id === +id
     })
+    findedNote.isEditable = true
   },
 
   editNote(NewNoteText, id) {
-    console.log(`model ${NewNoteText}, ${id}`)
-
-    this.notes.forEach(note => {
-      if (note.id === +id) {
-        note.text = NewNoteText
-        note.isEditable = false
-      }
+    const findedNote = this.notes.find(note => {
+      return note.id === +id
     })
-    console.log(this.notes)
+    findedNote.text = NewNoteText
+    findedNote.isEditable = false
   },
 }
 
