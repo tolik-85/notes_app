@@ -1,28 +1,49 @@
 const model = {
   notes: [],
-  prevValue: '',
-  nextValue: '',
 
-  addNote(note) {
+  addNoteByText(noteText) {
+    let noteId = this.notes.at(-1)?.id + 1
+    if (!noteId) {
+      noteId = 1
+    }
+    const note = {
+      id: noteId,
+      text: noteText,
+      isEditable: false,
+      isDeleted: false,
+    }
+
     this.notes.push(note)
   },
 
-  deleteNote(note) {
-    const noteToDeleteindex = this.notes.indexOf(note)
-    this.notes.splice(noteToDeleteindex, 1)
+  getNotes() {
+    const notes = this.notes.filter(note => note.isDeleted === false)
+    return notes
   },
 
-  getNotes() {
-    return this.notes
+  setNotes(notes) {
+    this.notes = notes
   },
-  changeNote() {
-    const noteIndex = this.notes.indexOf(this.prevValue)
-    this.notes[noteIndex] = this.nextValue
+
+  removeNoteById(id) {
+    const findedNote = this.notes.find(note => {
+      return note.id === +id
+    })
+    findedNote.isDeleted = true
   },
-  setPrevValue(prevValue) {
-    this.prevValue = prevValue
+
+  markNoteAsEditableById(id) {
+    const findedNote = this.notes.find(note => {
+      return note.id === +id
+    })
+    findedNote.isEditable = true
   },
-  setNextValue(nextValue) {
-    this.nextValue = nextValue
+
+  editNote(NewNoteText, id) {
+    const findedNote = this.notes.find(note => {
+      return note.id === +id
+    })
+    findedNote.text = NewNoteText
+    findedNote.isEditable = false
   },
 }
